@@ -11,7 +11,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <testng.version>7.1.0</testng.version>
-        <selenide.version>6.7.2</selenide.version>
+        <selenide.version>6.12.3</selenide.version>
     </properties>
 
     <dependencies>
