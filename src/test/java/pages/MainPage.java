@@ -14,7 +14,6 @@ public class MainPage {
     private SelenideElement homeButton = $(new ByText("Home"));
     private SelenideElement yourPostButton = $(By.xpath("//div[contains(@class, 'content-pane')]//a[contains(text(), 'Your posts')]"));
     private SelenideElement postUpdateButton = $(By.xpath("//div[@class ='buttons']/a[text() ='Post update']"));
-    private ElementsCollection hugs = $$(By.xpath("//header[@class = 'card-header']/parent::div/following::section//div//a"));
     private ElementsCollection hugButtons = $$(By.xpath("//header[@class = 'card-header']//following::footer/a[contains(text(), 'Hug')]"));
     private SelenideElement editProfileButton = $(By.xpath("//div[contains(@class, 'content-pane')]//a[contains(text(), 'Edit profile')]"));
 
@@ -24,7 +23,7 @@ public class MainPage {
     }
 
     public MainPage clickHugButton() {
-        hugButtons.get(0).click();
+        hugButtons.get(2).click();
         return this;
     }
 
@@ -33,14 +32,11 @@ public class MainPage {
         return new PostPage();
     }
 
-    public boolean isUserClick() {
-        hugs.get(0).shouldBe(Condition.enabled, Duration.ofSeconds(5));
-        return hugs.get(0).getText().contains("Irena");
-    }
-
-    public String receiveHugButtonTittle() {
-        hugButtons.get(0).shouldBe(Condition.disabled, Duration.ofSeconds(5));
-        return hugButtons.get(0).getText();
+    public String getNameButton() {
+        hugButtons
+                .get(2)
+                .shouldBe(Condition.attribute("disabled"), Duration.ofSeconds(10));
+        return hugButtons.get(2).getText();
     }
 
     public MyPostPage clickYourPostButton() {

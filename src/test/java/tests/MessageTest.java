@@ -14,6 +14,8 @@ public class MessageTest extends BaseTest{
         LoginPage loginPage = new LoginPage();
         loginPage.login(Credentials.USERNAME, Credentials.PASSWORD)
                 .clickPostUpdateButton()
+                .clickMoodButton()
+                .chooseAndClickMood()
                 .sendTextMessage()
                 .clickUpdateButton()
                 .updateMood();
