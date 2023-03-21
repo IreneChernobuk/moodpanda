@@ -5,15 +5,15 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.selector.ByText;
 import org.openqa.selenium.By;
+
 import java.time.Duration;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+
+import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage {
     private SelenideElement homeButton = $(new ByText("Home"));
     private SelenideElement yourPostButton = $(By.xpath("//div[contains(@class, 'content-pane')]//a[contains(text(), 'Your posts')]"));
     private SelenideElement postUpdateButton = $(By.xpath("//div[@class ='buttons']/a[text() ='Post update']"));
-
     private ElementsCollection hugs = $$(By.xpath("//header[@class = 'card-header']/parent::div/following::section//div//a"));
     private ElementsCollection hugButtons = $$(By.xpath("//header[@class = 'card-header']//following::footer/a[contains(text(), 'Hug')]"));
     private SelenideElement editProfileButton = $(By.xpath("//div[contains(@class, 'content-pane')]//a[contains(text(), 'Edit profile')]"));
@@ -24,7 +24,7 @@ public class MainPage {
     }
 
     public MainPage clickHugButton() {
-        hugButtons.get(4).click();
+        hugButtons.get(0).click();
         return this;
     }
 
@@ -34,22 +34,21 @@ public class MainPage {
     }
 
     public boolean isUserClick() {
-        hugs.get(4).shouldBe(Condition.visible, Duration.ofSeconds(5));
-        return hugs.get(4).getText().contains("Irena B");
+        hugs.get(0).shouldBe(Condition.enabled, Duration.ofSeconds(5));
+        return hugs.get(0).getText().contains("Irena");
     }
 
     public String receiveHugButtonTittle() {
-        hugButtons.get(1).shouldBe(Condition.disabled, Duration.ofSeconds(5));
-        String HugButtonTittle = hugButtons.get(2).getText();
-        return HugButtonTittle;
+        hugButtons.get(0).shouldBe(Condition.disabled, Duration.ofSeconds(5));
+        return hugButtons.get(0).getText();
     }
 
-    public MyPostPage clickYourPostButton(){
+    public MyPostPage clickYourPostButton() {
         yourPostButton.click();
         return new MyPostPage();
     }
 
-    public EditProfilePage clickEditProfileButton(){
+    public EditProfilePage clickEditProfileButton() {
         editProfileButton.click();
         return new EditProfilePage();
     }

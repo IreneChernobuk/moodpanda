@@ -18,7 +18,7 @@ public class HugTest extends BaseTest {
     }
 
     @Test
-    public void SendHugTest2() { //не работает но очень хотелось бы!!
+    public void SendHugTest2() {
         LoginPage loginPage = new LoginPage();
         String HugButtonTittle = loginPage
                 .login(Credentials.USERNAME, Credentials.PASSWORD)
