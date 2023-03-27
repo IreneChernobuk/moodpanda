@@ -1,0 +1,13 @@
+---
+doe: "Jonh"
+int: 3
+pi: 3.14
+boolean: false
+course-type:
+  - "offline"
+  - "online"
+courses:
+  front-end: 3200
+  python: 2900
+  java: 3300
+
